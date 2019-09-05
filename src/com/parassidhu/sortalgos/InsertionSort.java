@@ -1,25 +1,26 @@
 package com.parassidhu.sortalgos;
 
-import java.util.ArrayList;
-
 public class InsertionSort {
 
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
-        list.add(6);
-        System.out.println(rotateArray(list,2));
-    }
+        int[] intArray = {10, 50, -45, 0, 32, -101};
 
-    public static ArrayList<Integer> rotateArray(ArrayList<Integer> A, int B) {
-        ArrayList<Integer> ret = new ArrayList<Integer>();
-        for (int i = 0; i < A.size(); i++) {
-            ret.add(A.get((i+B)%A.size()));
+        for (int firstUnsortedIndex = 1; firstUnsortedIndex < intArray.length;
+             firstUnsortedIndex++) {
+
+            int newElement = intArray[firstUnsortedIndex];
+
+            int i;
+
+            for (i = firstUnsortedIndex; i > 0 && intArray[i - 1] > newElement; i--) {
+                intArray[i] = intArray[i-1];
+            }
+
+            intArray[i] = newElement;
         }
-        return ret;
+
+        for (int i = 0; i < intArray.length; i++) {
+            System.out.print(intArray[i] + " ");
+        }
     }
 }
